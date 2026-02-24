@@ -51,24 +51,15 @@ const CustomizedContent = (props: any) => {
 
 export default function CategoryTreemap({ filters }: any) {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <Treemap
-        data={data}
-        dataKey="size"
-        ratio={4 / 3}
-        stroke="#0f1015"
-        content={<CustomizedContent />} // 🔹 2. INYECTAMOS NUESTRO DIBUJANTE AQUÍ
+<ResponsiveContainer width="100%" height="100%">
+      <Treemap 
+        data={data} 
+        dataKey="size" 
+        aspectRatio={4 / 3}   
+        stroke="#0f1015" 
+        content={<CustomizedContent />}
       >
-        <Tooltip
-          formatter={(value: any) => `RD$ ${Number(value).toLocaleString()}`}
-          contentStyle={{
-            backgroundColor: "#1f2937",
-            borderColor: "#374151",
-            color: "#f3f4f6",
-            borderRadius: "0.5rem"
-          }}
-          itemStyle={{ color: "#e5e7eb" }}
-        />
+        <Tooltip formatter={(value: any) => `RD$ ${Number(value).toLocaleString()}`} contentStyle={{ backgroundColor: "#1f2937", borderColor: "#374151", color: "#f3f4f6", borderRadius: "0.5rem" }} itemStyle={{ color: "#e5e7eb" }} />
       </Treemap>
     </ResponsiveContainer>
   );
