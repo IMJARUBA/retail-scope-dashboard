@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Sidebar from "@/components/Sidebar";
+import Topbar from "@/components/Topbar";
+import { FiltersProvider } from "@/context/FiltersContext";
+import GlobalFilters from "@/components/GlobalFilters";
+import { Filter } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +24,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="es">
+      <body className="bg-white">
+        <FiltersProvider>
+        <div className="flex">
+          <Sidebar />
+          <div className="flex-1">
+            <GlobalFilters />
+            <main className="p-6">{children}</main>
+          </div>
+        </div>
+        </FiltersProvider>
       </body>
     </html>
   );
